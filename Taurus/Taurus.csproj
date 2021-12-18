@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnableNETAnalyzers>True</EnableNETAnalyzers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Orion.Core">
+      <HintPath>..\..\..\orion-core\src\Orion.Core\bin\Debug\netstandard2.1\Orion.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="OTAPI">
+      <HintPath>..\..\..\Open-Terraria-API\Open-Terraria-API\OTAPI.Patcher\bin\Debug\net5.0\OTAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="OTAPI.Runtime">
+      <HintPath>..\..\..\Open-Terraria-API\Open-Terraria-API\OTAPI.Patcher\bin\Debug\net5.0\OTAPI.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

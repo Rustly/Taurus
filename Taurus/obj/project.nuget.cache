@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "aYpS2ZdIJI9Vt/ULEiXpIewf9vBP3dT1KzoWM5EPRXiWr1m9fH31F3DP0i0H4J8c1ff1VSEOrP6MeRMCEa4Www==",
+  "success": true,
+  "projectFilePath": "G:\\Github\\Taurus\\Taurus\\Taurus\\Taurus.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Rustl\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Rustl\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512"
+  ],
+  "logs": []
+}
