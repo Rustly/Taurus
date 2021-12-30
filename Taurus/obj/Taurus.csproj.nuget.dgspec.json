@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Github\\Taurus\\Taurus\\Taurus\\Taurus.csproj": {}
+    "C:\\Users\\Nva43\\Source\\Repos\\Taurus\\Taurus\\Taurus.csproj": {}
   },
   "projects": {
-    "G:\\Github\\Taurus\\Taurus\\Taurus\\Taurus.csproj": {
+    "C:\\Users\\Nva43\\Source\\Repos\\Taurus\\Taurus\\Taurus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Github\\Taurus\\Taurus\\Taurus\\Taurus.csproj",
+        "projectUniqueName": "C:\\Users\\Nva43\\Source\\Repos\\Taurus\\Taurus\\Taurus.csproj",
         "projectName": "Taurus",
-        "projectPath": "G:\\Github\\Taurus\\Taurus\\Taurus\\Taurus.csproj",
-        "packagesPath": "C:\\Users\\Rustl\\.nuget\\packages\\",
-        "outputPath": "G:\\Github\\Taurus\\Taurus\\Taurus\\obj\\",
+        "projectPath": "C:\\Users\\Nva43\\Source\\Repos\\Taurus\\Taurus\\Taurus.csproj",
+        "packagesPath": "C:\\Users\\Nva43\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nva43\\Source\\Repos\\Taurus\\Taurus\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Rustl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nva43\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -64,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

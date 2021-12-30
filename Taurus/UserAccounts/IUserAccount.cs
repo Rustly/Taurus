@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Taurus.UserGroups;
 
 namespace Taurus.UserAccounts
 {
-    public interface IUserAccount
+    public interface IUserAccount : Entities.IEntity
     {
-        public Guid Id { get; set; }
+        public string Name { get; }
 
-        public string Name { get; set; }
+        public string UUID { get; }
 
-        public string UUID { get; set; }
+        public string Prefix { get; }
 
-        public UserGroups.IUserGroup Group { get; set; }
+        public string Suffix { get; }
 
-        public ICollection<string> KnownIPs { get; set; }
+        public IReadOnlyCollection<string> Permissions { get; }
 
-        public bool VerifyPassword(string passwordToVerify);
+        public IUserGroup Group { get; }
 
-        public T GetMetadata<T>(string key);
-
-        public void SetMetadata(string key, object value);
+        public IReadOnlyCollection<IPAddress> KnownIPs { get; }
     }
 }

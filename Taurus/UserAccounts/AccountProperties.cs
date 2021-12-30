@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Taurus.UserAccounts
 {
-    public interface IUserAccountProvider : Databases.IDatabase<IUserAccount>
+    public class AccountProperties
     {
-        public IUserAccount Get(string username);
+        public string Name { get; set; }
+
+        public string Prefix { get; set; }
+
+        public string Suffix { get; set; }
     }
 }

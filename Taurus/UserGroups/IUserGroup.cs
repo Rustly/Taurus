@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace Taurus.UserGroups
 {
-    public interface IUserGroup
+    public interface IUserGroup : Entities.IEntity
     {
-        public Guid Id { get; set; }
+        public string Name { get; }
 
-        public string Name { get; set; }
+        public string Prefix { get; }
 
-        public bool HasPermission(string permission);
+        public string Suffix { get; }
 
-        public bool AddPermission(string permission);
-
-        public bool RemovePermission(string permission);
+        public IReadOnlyCollection<string> Permissions { get; }
     }
 }

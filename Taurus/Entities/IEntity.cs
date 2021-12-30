@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Taurus.Entities
 {
-    internal class TaurusEntity
+    public interface IEntity
     {
+        public Guid Id { get; }
     }
 }
