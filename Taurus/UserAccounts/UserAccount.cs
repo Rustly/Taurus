@@ -8,15 +8,14 @@ using Taurus.UserGroups;
 
 namespace Taurus.UserAccounts
 {
-    /// <summary>
-    ///     We want setters to be internal, and not accessible from outside the library.
-    /// </summary>
+    /// <inheritdoc/>
     public class UserAccount : IUserAccount
     {
         private readonly string _password;
 
         private List<string> _userPerms;
 
+        /// <inheritdoc/>
         public Guid Id { get; internal set; }
 
         /// <inheritdoc/>

@@ -2,12 +2,14 @@
 
 namespace Taurus.UserGroups
 {
+    /// <inheritdoc/>
     public class UserGroup : IUserGroup
     {
         private readonly DatabaseClient _db;
 
         private const string _table = "usergroups";
 
+        /// <inheritdoc/>
         public Guid Id { get; internal set; }
 
         /// <summary>

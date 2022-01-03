@@ -7,8 +7,10 @@ using Taurus.Flags;
 
 namespace Taurus.Regions
 {
+    /// <inheritdoc/>
     public class Region : IRegion
     {
+        /// <inheritdoc/>
         public Guid Id { get; internal set; }
 
         /// <summary>
@@ -16,16 +18,22 @@ namespace Taurus.Regions
         /// </summary>
         public string Name { get; internal set; }
 
+        /// <inheritdoc/>
         public Vector2f Pos1 { get; internal set; }
 
+        /// <inheritdoc/>
         public Vector2f Pos2 { get; internal set; }
 
+        /// <inheritdoc/>
         public Guid OwnerId { get; internal set; }
 
+        /// <inheritdoc/>
         public IReadOnlyCollection<Guid> IdsWithAccess { get; internal set; }
 
+        /// <inheritdoc/>
         public IReadOnlyCollection<Buff> Buffs { get; internal set; }
 
+        /// <inheritdoc/>
         public IReadOnlyCollection<RegionFlags> Flags { get; internal set; }
 
         internal Region()
