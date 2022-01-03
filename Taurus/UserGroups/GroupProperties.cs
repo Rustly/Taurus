@@ -13,5 +13,9 @@ namespace Taurus.UserGroups
         public string Prefix { get; set; }
 
         public string Suffix { get; set; }
+
+        public bool? CanBuild { get; set; }
+
+        public bool? CanPaint { get; set; }
     }
 }
