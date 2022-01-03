@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
+using Taurus.Commands.Parsers;
 using Taurus.Permissions;
 
 namespace Taurus.Commands
@@ -17,21 +13,12 @@ namespace Taurus.Commands
         public string HelpText { get; private set; }
 
         private readonly MethodInfo _handler;
-        private readonly Dictionary<Type, Func<string, object>> _parsers = new()
-        {
-            { typeof(int), (s) => int.Parse(s) },
-            { typeof(byte), (s) => byte.Parse(s) },
-            { typeof(short), (s) => short.Parse(s) },
-        };
 
-        public AttributedCommand(MethodInfo handler, string[] names, string helpText, Dictionary<Type, Func<string, object>> customParsers)
+        public AttributedCommand(MethodInfo handler, string[] names, string helpText)
         {
             _handler = handler;
             Names = names;
             HelpText = helpText;
-
-            foreach (var p in customParsers)
-                _parsers[p.Key] = p.Value;
         }
 
         public bool CanExecute(IPermissible user)
@@ -62,7 +49,7 @@ namespace Taurus.Commands
                     }
                 }
                 else
-                    value = _parsers[param.ParameterType].Invoke(args.Parameters[i]);
+                    value = Parser.GetValue(param.ParameterType, args.Parameters[i]);
 
                 methodArgs[i] = value;
                 i++;

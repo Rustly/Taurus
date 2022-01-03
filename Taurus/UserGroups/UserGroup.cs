@@ -1,12 +1,13 @@
-﻿namespace Taurus.UserGroups
+﻿using Taurus.Databases;
+
+namespace Taurus.UserGroups
 {
-    /// <summary>
-    ///     Making this a struct since groups should be cached, and not require a lookup if no values are changed inside. 
-    ///     
-    ///     We can set events in the setters to trigger re-caching.
-    /// </summary>
     public class UserGroup : IUserGroup
     {
+        private readonly DatabaseClient _db;
+
+        private readonly string _table;
+
         public Guid Id { get; internal set; }
 
         /// <summary>
@@ -44,9 +45,23 @@
         /// </summary>
         public IReadOnlyCollection<string> Permissions { get; internal set; }
 
-        internal UserGroup()
+        internal UserGroup(string name)
         {
-            // DB!
+            _db = new DatabaseClient("your mother"); // This is a very wrong approach, will rework this when implementing our service provider.
+            _table = "usergroups";
+
+            var entry = _db.FindOne<UserGroup>(x => x.Id == new Guid(), _table);
+
+            if (entry is null)
+                throw new ArgumentNullException(nameof(name), "This group does not exist! The default group will be assigned to this user."); // TODO
+
+            Name = entry.Name;
+            Prefix = entry.Prefix;
+            Suffix = entry.Suffix;
+            CanBuild = entry.CanBuild;
+            CanPaint = entry.CanPaint;
+            IsDefault = entry.IsDefault;
+            Permissions = entry.Permissions;
         }
 
         /// <summary>
@@ -70,6 +85,7 @@
             var current = Permissions.ToList();
             current.AddRange(@new);
             Permissions = current;
+            _db.InsertOrUpdateOne(this, _table);
             return true;
         }
 
@@ -84,6 +100,7 @@
             if (@new.Count == Permissions.Count)
                 return false;
             Permissions = @new;
+            _db.InsertOrUpdateOne(this, _table);
             return true;
         }
 
@@ -104,6 +121,8 @@
                 CanBuild = args.CanBuild.Value;
             if (args.CanPaint.HasValue)
                 CanPaint = args.CanPaint.Value;
+
+            _db.InsertOrUpdateOne(this, _table);
         }
     }
 }
