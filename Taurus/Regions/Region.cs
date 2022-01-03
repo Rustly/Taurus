@@ -12,7 +12,7 @@ namespace Taurus.Regions
         public Guid Id { get; internal set; }
 
         /// <summary>
-        ///     Name of this region.
+        ///     The name of this region.
         /// </summary>
         public string Name { get; internal set; }
 
@@ -31,6 +31,30 @@ namespace Taurus.Regions
         internal Region()
         {
             // DB!
+        }
+
+        /// <summary>
+        ///     Tries to get a region by name.
+        /// </summary>
+        /// <param name="name">The name of the region to look for.</param>
+        /// <param name="result">The group to return.</param>
+        /// <returns><see cref="true"/> if found. <see cref="false"/> if not.</returns>
+        public static bool TryGet(string name, out Region result)
+        {
+            result = Entities.EntityHelper.TryGet<Region>(name);
+            return result != null;
+        }
+
+        /// <summary>
+        ///     Tries to get a region by ID.
+        /// </summary>
+        /// <param name="uid">The ID of the region to look for.</param>
+        /// <param name="result">The region to return.</param>
+        /// <returns><see cref="true"/> if found. <see cref="false"/> if not.</returns>
+        public static bool TryGet(Guid uid, out Region result)
+        {
+            result = Entities.EntityHelper.TryGet<Region>(uid);
+            return result != null;
         }
     }
 }

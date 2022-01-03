@@ -6,7 +6,7 @@ namespace Taurus.UserGroups
     {
         private readonly DatabaseClient _db;
 
-        private readonly string _table;
+        private const string _table = "usergroups";
 
         public Guid Id { get; internal set; }
 
@@ -15,40 +15,27 @@ namespace Taurus.UserGroups
         /// </summary>
         public string Name { get; internal set; }
 
-        /// <summary>
-        ///     The prefix of this group.
-        /// </summary>
+        /// <inheritdoc/>
         public string Prefix { get; internal set; }
 
-        /// <summary>
-        ///     The suffix of this group.
-        /// </summary>
+        /// <inheritdoc/>
         public string Suffix { get; internal set; }
 
-        /// <summary>
-        ///     Gets if this group can build in the world.
-        /// </summary>
+        /// <inheritdoc/>
         public bool CanBuild { get; internal set; }
 
-        /// <summary>
-        ///     Gets if this group can paint in the world.
-        /// </summary>
+        /// <inheritdoc/>
         public bool CanPaint { get; internal set; }
 
-        /// <summary>
-        ///     Gets if this group is the default group new users obtain.
-        /// </summary>
+        /// <inheritdoc/>
         public bool IsDefault { get; internal set; }
 
-        /// <summary>
-        ///     The permissions of this group.
-        /// </summary>
+        /// <inheritdoc/>
         public IReadOnlyCollection<string> Permissions { get; internal set; }
 
         internal UserGroup(string name)
         {
             _db = new DatabaseClient("your mother"); // This is a very wrong approach, will rework this when implementing our service provider.
-            _table = "usergroups";
 
             var entry = _db.FindOne<UserGroup>(x => x.Id == new Guid(), _table);
 
@@ -123,6 +110,30 @@ namespace Taurus.UserGroups
                 CanPaint = args.CanPaint.Value;
 
             _db.InsertOrUpdateOne(this, _table);
+        }
+
+        /// <summary>
+        ///     Tries to get a group by name.
+        /// </summary>
+        /// <param name="name">The name of the group to look for.</param>
+        /// <param name="result">The group to return.</param>
+        /// <returns><see cref="true"/> if found. <see cref="false"/> if not.</returns>
+        public static bool TryGet(string name, out UserGroup result)
+        {
+            result = Entities.EntityHelper.TryGet<UserGroup>(name);
+            return result != null;
+        }
+
+        /// <summary>
+        ///     Tries to get a group by ID.
+        /// </summary>
+        /// <param name="uid">The ID of the group to look for.</param>
+        /// <param name="result">The group to return.</param>
+        /// <returns><see cref="true"/> if found. <see cref="false"/> if not.</returns>
+        public static bool TryGet(Guid uid, out UserGroup result)
+        {
+            result = Entities.EntityHelper.TryGet<UserGroup>(uid);
+            return result != null;
         }
     }
 }

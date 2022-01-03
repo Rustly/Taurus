@@ -49,7 +49,7 @@ namespace Taurus.Commands
                     }
                 }
                 else
-                    value = Parser.GetValue(param.ParameterType, args.Parameters[i]);
+                    value = BaseParsers.GetValue(param.ParameterType, args.Parameters[i]);
 
                 methodArgs[i] = value;
                 i++;

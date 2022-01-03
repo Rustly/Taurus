@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Taurus.Commands.Parsers
+﻿namespace Taurus.Commands.Parsers
 {
-    public static class Parser
+    public static class BaseParsers
     {
         private static readonly Dictionary<Type, Func<string, object>> _baseParsers;
 
-        static Parser()
+        static BaseParsers()
             => _baseParsers = new()
             {
                 { typeof(byte), (s) => byte.Parse(s) },

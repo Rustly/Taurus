@@ -19,59 +19,39 @@ namespace Taurus.UserAccounts
 
         public Guid Id { get; internal set; }
 
-        /// <summary>
-        ///     UUID of this account.
-        /// </summary>
+        /// <inheritdoc/>
         public string UUID { get; internal set; }
 
         /// <summary>
-        ///     The name of this account.
+        ///     The name of this user.
         /// </summary>
         public string Name { get; internal set; }
 
-        /// <summary>
-        ///     Prefix of this account. Will be prefix of the <see cref="Group"/> if left unmodified.
-        /// </summary>
+        /// <inheritdoc/>
         public string Prefix { get; internal set; }
 
-        /// <summary>
-        ///     Suffix of this account. Will be suffix of the <see cref="Group"/> if left unmodified.
-        /// </summary>
+        /// <inheritdoc/>
         public string Suffix { get; internal set; }
 
-        /// <summary>
-        ///     Permissions of this account, together with the permission of its <see cref="Group"/>.
-        /// </summary>
+        /// <inheritdoc/>
         public IReadOnlyCollection<string> Permissions { get; internal set; }
 
-        /// <summary>
-        ///     The history of IP's on this account. IPAddress type for consistency throughout all usecases.
-        /// </summary>
-        public IReadOnlyCollection<IPAddress> KnownIPs { get; internal set; } 
+        /// <inheritdoc/>
+        public IReadOnlyCollection<IPAddress> KnownIPs { get; internal set; }
 
-        /// <summary>
-        ///     Group of the account.
-        /// </summary>
+        /// <inheritdoc/>
         public IUserGroup Group { get; internal set; }
 
-        /// <summary>
-        ///     Gets if this account is currently muted.
-        /// </summary>
+        /// <inheritdoc/>
         public bool IsMuted { get; internal set; }
 
-        /// <summary>
-        ///     Gets if this account is currently warned.
-        /// </summary>
+        /// <inheritdoc/>
         public bool IsWarned { get; internal set; }
 
-        /// <summary>
-        ///     Gets if this account is currently banned.
-        /// </summary>
+        /// <inheritdoc/>
         public bool IsBanned { get; internal set; }
 
-        /// <summary>
-        ///     The leave position of this account.
-        /// </summary>
+        /// <inheritdoc/>
         public Vector2f LastPosition { get; internal set; }
 
         internal UserAccount()
@@ -173,6 +153,30 @@ namespace Taurus.UserAccounts
         public bool Mute(string reason = "", TimeSpan? span = null)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        ///     Tries to get an account by name.
+        /// </summary>
+        /// <param name="name">The name of the account to look for.</param>
+        /// <param name="result">The account to return.</param>
+        /// <returns><see cref="true"/> if found. <see cref="false"/> if not.</returns>
+        public static bool TryGet(string name, out UserAccount result)
+        {
+            result = Entities.EntityHelper.TryGet<UserAccount>(name);
+            return result != null;
+        }
+
+        /// <summary>
+        ///     Tries to get an account by ID.
+        /// </summary>
+        /// <param name="uid">The ID of the account to look for.</param>
+        /// <param name="result">The account to return.</param>
+        /// <returns><see cref="true"/> if found. <see cref="false"/> if not.</returns>
+        public static bool TryGet(Guid uid, out UserAccount result)
+        { 
+            result = Entities.EntityHelper.TryGet<UserAccount>(uid);
+            return result != null;
         }
 
         /// <summary>
