@@ -160,7 +160,7 @@ namespace Taurus.UserAccounts
         /// <param name="name">The name of the account to look for.</param>
         /// <param name="result">The account to return.</param>
         /// <returns><see cref="true"/> if found. <see cref="false"/> if not.</returns>
-        public static bool TryGet(string name, out UserAccount result)
+        public static bool TryParse(string name, out UserAccount result)
         {
             result = Entities.EntityHelper.TryGet<UserAccount>(name);
             return result != null;

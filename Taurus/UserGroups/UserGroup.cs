@@ -120,7 +120,7 @@ namespace Taurus.UserGroups
         /// <param name="name">The name of the group to look for.</param>
         /// <param name="result">The group to return.</param>
         /// <returns><see cref="true"/> if found. <see cref="false"/> if not.</returns>
-        public static bool TryGet(string name, out UserGroup result)
+        public static bool TryParse(string name, out UserGroup result)
         {
             result = Entities.EntityHelper.TryGet<UserGroup>(name);
             return result != null;

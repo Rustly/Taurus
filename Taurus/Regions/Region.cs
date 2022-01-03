@@ -47,7 +47,7 @@ namespace Taurus.Regions
         /// <param name="name">The name of the region to look for.</param>
         /// <param name="result">The group to return.</param>
         /// <returns><see cref="true"/> if found. <see cref="false"/> if not.</returns>
-        public static bool TryGet(string name, out Region result)
+        public static bool TryParse(string name, out Region result)
         {
             result = Entities.EntityHelper.TryGet<Region>(name);
             return result != null;

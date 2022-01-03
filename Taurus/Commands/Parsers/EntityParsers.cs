@@ -8,17 +8,22 @@ namespace Taurus.Commands.Parsers
     {
         public static UserAccount ParseUserAccount(string s)
         {
-            throw new NotImplementedException();
+            if (UserAccount.TryParse(s, out UserAccount result))
+                return result;
+            else return null;
         }
-
         public static UserGroup ParseUserGroup(string s)
         {
-            throw new NotImplementedException();
+            if (UserGroup.TryParse(s, out UserGroup result))
+                return result;
+            else return null;
         }
 
         public static Region ParseRegion(string s)
         {
-            throw new NotImplementedException();
+            if (Region.TryParse(s, out Region result))
+                return result;
+            else return null;
         }
     }
 }
